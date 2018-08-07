@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rootElement>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    version="2.0">
+
+    <persistence-unit name="RecipeManager_PU" transaction-type="RESOURCE_LOCAL">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.user" value="admin" />
+            <property name="javax.persistence.jdbc.password" value="azerty" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/recipemanager?serverTimezone=UTC" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        </properties>
+    </persistence-unit>
+</persistence>
