@@ -8,19 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Connexion")
-public class DeconnexionServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*
-		 * * A finaliser
-		 */
 		
-		String nom = null;
-		req.getSession().setAttribute("", nom);
-		resp.sendRedirect("/RecipeManager/Connexion");
+		
+		/// Redirection à faire :
+		resp.sendRedirect("/RecipeManager/...");
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/login.jsp").forward(req, resp);
+	}
+
 }

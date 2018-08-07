@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/mesRecettes")
-public class MesRecettesServlet extends HttpServlet {
-	
+@WebServlet("/listTopRecipe")
+public class ListTopRecipeServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		
 		///Redirection à faire :
 		resp.sendRedirect("/RecipeManager/...");
@@ -22,8 +23,7 @@ public class MesRecettesServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/mesRecettes.jsp").forward(req, resp);
+		req.getRequestDispatcher("/listTopRecipe.jsp").forward(req, resp);
 	}
-	
 
 }

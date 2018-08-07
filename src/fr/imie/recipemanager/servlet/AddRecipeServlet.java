@@ -8,14 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ajoutIngredient")
-public class AjoutIngredientServlet extends HttpServlet {
+@WebServlet("/addRecipe")
+public class AddRecipeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		/// Instancier un ingrédient
 		
+		/// Instancier le DAO et ajouter les ingrédients
 		
 		/// Redirection à faire :
 		resp.sendRedirect("/RecipeManager/...");
@@ -23,7 +25,7 @@ public class AjoutIngredientServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/ajoutIngredient.jsp").forward(req, resp);
+		req.getRequestDispatcher("/addRecipe.jsp").forward(req, resp);
 	}
 
 }

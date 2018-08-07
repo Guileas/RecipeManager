@@ -19,46 +19,53 @@ public class Ingredient implements Serializable{
     private Long id;
 	
 	@OneToMany (mappedBy="ingredient")
-    private List<Quantite> quantites;
+    private List<Quantity> quantity;
 	
-	private String nom;
-	private float prix;
+	private String name;
+	private float price;
 	
 	
-	public List<Quantite> getQuantites() {
-		return quantites;
-	}
-
-	public void setQuantites(List<Quantite> quantites) {
-		this.quantites = quantites;
-	}
-
 	public Ingredient() {
 		
 	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+
+	public List<Quantity> getQuantity() {
+		return quantity;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+
+	public void setQuantity(List<Quantity> quantity) {
+		this.quantity = quantity;
 	}
 
-	public float getPrix() {
-		return prix;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setPrix(float prix) {
-		this.prix = prix;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
+
+	public float getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
 }

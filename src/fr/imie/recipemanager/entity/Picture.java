@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Image implements Serializable{
+public class Picture implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,25 +19,15 @@ public class Image implements Serializable{
     private Long id;
 	
 	@ManyToOne
-	@JoinColumn (name ="Recette_fk")
-	private Recette recetteImage;
+	@JoinColumn (name ="Recipe_fk")
+	private Recipe recipePicture;
 	
-	
+	private String pictureLink;
 
-	public Recette getRecetteImage() {
-		return recetteImage;
-	}
-
-	public void setRecetteImage(Recette recetteImage) {
-		this.recetteImage = recetteImage;
-	}
-
-	private String cheminImage;
-
-	public Image() {
+	public Picture() {
 		
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -46,12 +36,20 @@ public class Image implements Serializable{
 		this.id = id;
 	}
 
-	public String getCheminImage() {
-		return cheminImage;
+	public Recipe getRecipePicture() {
+		return recipePicture;
 	}
 
-	public void setCheminImage(String cheminImage) {
-		this.cheminImage = cheminImage;
+	public void setRecipePicture(Recipe recipePicture) {
+		this.recipePicture = recipePicture;
+	}
+
+	public String getPictureLink() {
+		return pictureLink;
+	}
+
+	public void setPictureLink(String pictureLink) {
+		this.pictureLink = pictureLink;
 	}
 	
 	
