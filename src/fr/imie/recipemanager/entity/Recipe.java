@@ -1,7 +1,7 @@
 package fr.imie.recipemanager.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -37,14 +37,18 @@ public class Recipe implements Serializable{
 
 	private String name;
 	private String description;
-	private Time preparationTime;
-	private Time cookingTime;
+	private Timestamp preparationTime;
+	private Timestamp cookingTime;
 	private float totalPrice;
 	
-	public Recipe(String name) {
+
+	public Recipe(String name, String description, float totalPrice) {
+		
 		this.name = name;
+		this.description = description;
+		this.totalPrice = totalPrice;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -101,19 +105,19 @@ public class Recipe implements Serializable{
 		this.description = description;
 	}
 
-	public Time getPreparationTime() {
+	public Timestamp getPreparationTime() {
 		return preparationTime;
 	}
 
-	public void setPreparationTime(Time preparationTime) {
+	public void setPreparationTime(Timestamp preparationTime) {
 		this.preparationTime = preparationTime;
 	}
 
-	public Time getCookingTime() {
+	public Timestamp getCookingTime() {
 		return cookingTime;
 	}
 
-	public void setCookingTime(Time cookingTime) {
+	public void setCookingTime(Timestamp cookingTime) {
 		this.cookingTime = cookingTime;
 	}
 

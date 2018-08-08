@@ -13,7 +13,7 @@
 			<input name="description" type="text" placeholder="Recipe Description" class="form-control"/>
 			<input type="time" id="appt-time" name="preparationTime" min="00:00" max="72:00" />
 			<input type="time" id="appt-time" name="cookingTime" min="00:00" max="72:00" />
-			<input name="totalPrice" type="number" placeholder="Recipe price" class="form-control" />
+			<input name="totalPrice" type="number" step="0.01" placeholder="Recipe price" class="form-control" />
 			<input type="submit" value="Send" class="btn btn-primary btn-form"/>
 		</form>
 </body>
