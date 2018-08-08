@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 		if ((pseudo.equals(name)) && (password.equals(psd))) {
 			req.getSession().setAttribute("pseudo", pseudo);
 			req.getSession().setAttribute("password", password);
-			resp.sendRedirect("/ecipeManager/addIngredient");
+			resp.sendRedirect("/RecipeManager/addIngredient");
 		} else if ((pseudo != name) || (password != psd)) {
 			System.out.println("le pseudo est erroné");
 			resp.sendRedirect("/RecipeManager/login");

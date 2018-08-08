@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.imie.recipemanager.dao.DaoFactory;
+import fr.imie.recipemanager.dao.IngredientDao;
+import fr.imie.recipemanager.entity.Ingredient;
+
 @WebServlet("/addIngredient")
 public class AddIngredientServlet extends HttpServlet {
 
@@ -16,9 +20,14 @@ public class AddIngredientServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
+		/*
+		 * Db insertion
+		 */
+		Ingredient ingredient = new Ingredient(req.getParameter("name"),Float.parseFloat(req.getParameter("price")));
+		IngredientDao ingredientDao = DaoFactory.getIngredientDao();
+		ingredientDao.addIngredient(ingredient);
 		/// Redirection à faire :
-		resp.sendRedirect("/RecipeManager/...");
+		resp.sendRedirect("/RecipeManager/myRecipe");
 	}
 	
 	@Override

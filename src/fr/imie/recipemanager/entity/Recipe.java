@@ -41,10 +41,10 @@ public class Recipe implements Serializable{
 	private Time cookingTime;
 	private float totalPrice;
 	
-	public Recipe() {
-		
+	public Recipe(String name) {
+		this.name = name;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
