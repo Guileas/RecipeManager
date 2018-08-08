@@ -2,9 +2,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Connexion</title>
 </head>
 <body>
-
+<form method="post" action="/RecipeManager/login">
+	<label>Pseudo : </label>
+	<input type="text" name="pseudo" />
+	<label>Mot de passe : </label>
+	<input type="password" name="password" />
+	<input type="submit" value="OK" />
+</form>
 </body>
 </html>

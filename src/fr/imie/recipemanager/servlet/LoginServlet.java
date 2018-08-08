@@ -15,10 +15,21 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pseudo = req.getParameter("pseudo");
+		String password = req.getParameter("password");
+		String name = "test";
+		String psd = "test";
 		
-		
-		/// Redirection à faire :
-		resp.sendRedirect("/RecipeManager/...");
+		if ((pseudo.equals(name)) && (password.equals(psd))) {
+			req.getSession().setAttribute("pseudo", pseudo);
+			req.getSession().setAttribute("password", password);
+			resp.sendRedirect("/ecipeManager/addIngredient");
+		} else if ((pseudo != name) || (password != psd)) {
+			System.out.println("le pseudo est erroné");
+			resp.sendRedirect("/RecipeManager/login");
+		} else {
+			System.out.println("else");
+		}
 	}
 	
 	@Override
