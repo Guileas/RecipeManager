@@ -8,15 +8,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
 	@OneToMany (mappedBy="userRecipe")
     private List<Recipe> recipes;
 	
@@ -29,7 +32,13 @@ public class User implements Serializable {
 	private String password;
 	
 	public User() {
-		
+	}
+	
+	public User(String lastname, String firstname, String pseudo, String password) {
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.pseudo = pseudo;
+		this.password = password;
 	}
 
 	public Long getId() {

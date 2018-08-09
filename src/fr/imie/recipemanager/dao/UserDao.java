@@ -12,5 +12,6 @@ public interface UserDao {
 	void addUser(User u);
 	List<User> getAllUser();
 	User findUserById(long id);
+	User findUserByPseudo(String pseudo);
 	void removeUser(User u);
 }

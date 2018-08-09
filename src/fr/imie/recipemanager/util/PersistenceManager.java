@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 
 public class PersistenceManager {
 
-	public static EntityManagerFactory emf;
+	private static EntityManagerFactory emf;
 	
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if(emf == null) {

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import fr.imie.recipemanager.dao.UserDao;
@@ -73,4 +74,33 @@ public class JpaUserDao implements UserDao {
 			em.close();
 		}
 	}
+	
+	@Override
+	public User findUserByPseudo(String pseudo) {
+		EntityManager em = emf.createEntityManager();
+		
+		User u = new User();
+		try {
+			Query query = em.createQuery("SELECT u FROM User AS u WHERE u.pseudo = :pseudo");
+			query.setParameter("pseudo", pseudo);
+			u = (User)query.getSingleResult();
+			System.out.println("Pseudo issu de la requete : " + u.getPseudo() );
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+		} catch (PersistenceException pe) {
+			System.out.println(pe.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		em.close();
+		return u;
+	}
+	
+	/*
+	 * *Query query = em.createQuery("SELECT cat FROM Cat AS cat WHERE cat.animalId = :id");
+query.setParameter("id", 5);
+Cat myCat = (Cat)query.getSingleResult();
+
+	 * 
+	 */
 }
