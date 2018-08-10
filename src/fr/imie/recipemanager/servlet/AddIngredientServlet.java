@@ -20,14 +20,11 @@ public class AddIngredientServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*
-		 * Db insertion
-		 */
 		Ingredient ingredient = new Ingredient(req.getParameter("name"),Float.parseFloat(req.getParameter("price")));
 		IngredientDao ingredientDao = DaoFactory.getIngredientDao();
 		ingredientDao.addIngredient(ingredient);
-		/// Redirection à faire :
-		resp.sendRedirect("/RecipeManager/myRecipe");
+		
+		resp.sendRedirect("/RecipeManager/listIngredient");
 	}
 	
 	@Override

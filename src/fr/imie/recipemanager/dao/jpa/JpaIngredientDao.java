@@ -43,8 +43,13 @@ public class JpaIngredientDao implements IngredientDao {
 	@Override
 	public List<Ingredient> getAllIngredient() {
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("SELECT i FROM Ingredient AS i");
-		List<Ingredient> ingredients = query.getResultList();
+		List<Ingredient> ingredients = null;
+		try {
+			Query query = em.createQuery("SELECT i FROM Ingredient AS i");
+			ingredients = (List<Ingredient>)query.getResultList();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}		
 		em.close();
 		return ingredients;
 	}

@@ -26,20 +26,22 @@ public class LoginServlet extends HttpServlet {
 		UserDao udao = DaoFactory.getUserDao();
 		name = udao.findUserByPseudo(pseudo).getPseudo();
 		psd = udao.findUserByPseudo(pseudo).getPassword();
-		
-		System.out.println("pseudo : " + name + " et mot de passe : " + psd);
-		System.out.println("pseudo : " + pseudo + " et mot de passe : " + password);
-		System.out.println(name.length() + " " + pseudo.length());
-		
-		/// Fonction à refaire avec recherche en BDD du pseudo et du mdp
-		if (name.equals(pseudo) && psd.equals(password)) {
-			req.getSession().setAttribute("pseudo", pseudo);
-			req.getSession().setAttribute("password", password);
-			resp.sendRedirect("/RecipeManager/addIngredient");
-		} else {
-			System.out.println("Your pseudo doesn't exists or your password is not exact");
+		try {
+			if (name.equals(pseudo) && psd.equals(password)) {
+				req.getSession().setAttribute("pseudo", pseudo);
+				req.getSession().setAttribute("password", password);
+				resp.sendRedirect("/RecipeManager/addIngredient");
+			} else if ((name.equals(null)) || (psd.equals(null))) {
+				System.out.println("Retour null");
+				resp.sendRedirect("/RecipeManager/login");
+			} else {
+				System.out.println("Your pseudo doesn't exists or your password is not exact");
+				resp.sendRedirect("/RecipeManager/login");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			resp.sendRedirect("/RecipeManager/login");
-		}
+		}		
 	}
 	
 	@Override

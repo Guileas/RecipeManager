@@ -7,7 +7,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div>
-			<h1>Products</h1>
+			<h1>Recipes</h1>
 		</div>
 		
 		<div>
@@ -43,6 +43,5 @@
 			</table>
 			
 		</div>
-	</div>
 </body>
 </html>
