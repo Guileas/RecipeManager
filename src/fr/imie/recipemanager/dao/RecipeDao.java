@@ -11,6 +11,7 @@ public interface RecipeDao {
 
 	void addRecipe(Recipe r);
 	List<Recipe> getAllRecipe();
+	List<Recipe> getAllUserRecipe(long id);
 	Recipe findRecipeById(long id);
 	void removeRecipe(Recipe r);
 }

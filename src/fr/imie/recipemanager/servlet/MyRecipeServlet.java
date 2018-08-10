@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.imie.recipemanager.dao.DaoFactory;
+import fr.imie.recipemanager.dao.RecipeDao;
+import fr.imie.recipemanager.entity.User;
+
 @WebServlet("/myRecipe")
 public class MyRecipeServlet extends HttpServlet {
 	
@@ -16,12 +20,15 @@ public class MyRecipeServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		///Redirection à faire :
-		resp.sendRedirect("/RecipeManager/...");
+		
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		RecipeDao recipeDao = DaoFactory.getRecipeDao();
+		recipeDao.getAllRecipe();
+		
 		req.getRequestDispatcher("/myRecipe.jsp").forward(req, resp);
 	}
 	
