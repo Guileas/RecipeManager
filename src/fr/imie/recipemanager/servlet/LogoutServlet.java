@@ -23,4 +23,9 @@ public class LogoutServlet extends HttpServlet {
 		req.getSession().setAttribute("", nom);
 		resp.sendRedirect("/RecipeManager/logout");
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/login.jsp").forward(req, resp);
+	}
 }

@@ -84,11 +84,7 @@ public class JpaUserDao implements UserDao {
 			Query query = em.createQuery("SELECT u FROM User AS u WHERE u.pseudo = :pseudo");
 			query.setParameter("pseudo", pseudo);
 			u = (User)query.getSingleResult();
-			System.out.println("Pseudo issu de la requete : " + u.getPseudo() );
-		} catch (NullPointerException e) {
-			System.out.println(e.getMessage());
-		} catch (PersistenceException pe) {
-			System.out.println(pe.getMessage());
+			///System.out.println("Pseudo issu de la requete : " + u.getPseudo() );
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

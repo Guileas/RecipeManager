@@ -1,24 +1,16 @@
 package fr.imie.recipemanager.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.metamodel.EntityType;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
 import fr.imie.recipemanager.dao.DaoFactory;
 import fr.imie.recipemanager.dao.UserDao;
 import fr.imie.recipemanager.entity.User;
-import fr.imie.recipemanager.util.PersistenceManager;
 
 @WebServlet("/signIn")
 public class InscriptionServlet extends HttpServlet {
@@ -50,7 +42,7 @@ public class InscriptionServlet extends HttpServlet {
 				
 				if(udao.findUserByPseudo(pseudo).equals(null)) {
 					message = "This pseudo already exists, please choose an other one.";
-					System.out.println(message);
+					System.out.println(message + " et le pseudo est : " + udao.findUserByPseudo(pseudo).getPseudo());
 					resp.sendRedirect("/RecipeManager/signIn");
 					
 				} else {
@@ -59,15 +51,11 @@ public class InscriptionServlet extends HttpServlet {
 					resp.sendRedirect("/RecipeManager/addIngredient");
 				}		
 				
-			} catch (IllegalStateException e) {
+			} catch (Exception e) {
 				message = e.getMessage();
 				System.out.println(message);
 				resp.sendRedirect("/RecipeManager/signIn");
 				
-			} catch (NullPointerException e) {
-				message = e.getMessage();
-				System.out.println(message);
-				resp.sendRedirect("/RecipeManager/signIn");
 			}
 		}
 	}
