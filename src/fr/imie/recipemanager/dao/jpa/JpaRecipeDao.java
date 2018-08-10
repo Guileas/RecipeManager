@@ -44,10 +44,23 @@ public class JpaRecipeDao implements RecipeDao {
 		EntityManager em = emf.createEntityManager();
 		Query query = em.createQuery("SELECT r FROM Recipe AS r");
 		List<Recipe> recipes = query.getResultList();
+		System.out.println(recipes);
 		em.close();
 		return recipes;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Recipe> getAllUserRecipe(long id) {
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createQuery("SELECT r FROM Recipe AS r WHERE r.User_fk = :id");
+		query.setParameter("id", id);
+		List<Recipe> recipes = query.getResultList();
+		
+		em.close();
+		return recipes;
+	}
+	
 	@Override
 	public Recipe findRecipeById(long id) {
 		EntityManager em = emf.createEntityManager();

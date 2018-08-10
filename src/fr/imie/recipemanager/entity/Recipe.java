@@ -41,7 +41,10 @@ public class Recipe implements Serializable{
 	private Timestamp cookingTime;
 	private float totalPrice;
 	
-
+	public Recipe() {
+		
+	}
+	
 	public Recipe(String name, String description, float totalPrice) {
 		
 		this.name = name;
