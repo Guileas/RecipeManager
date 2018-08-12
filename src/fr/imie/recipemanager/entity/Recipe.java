@@ -1,7 +1,7 @@
 package fr.imie.recipemanager.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -37,8 +37,8 @@ public class Recipe implements Serializable{
 
 	private String name;
 	private String description;
-	private Timestamp preparationTime;
-	private Timestamp cookingTime;
+	private LocalTime preparationTime;
+	private LocalTime cookingTime;
 	private float totalPrice;
 	
 	public Recipe() {
@@ -50,6 +50,15 @@ public class Recipe implements Serializable{
 		this.name = name;
 		this.description = description;
 		this.totalPrice = totalPrice;
+	}
+	
+public Recipe(String name, String description, float totalPrice, LocalTime preparationTime, LocalTime cookingTime) {
+		
+		this.name = name;
+		this.description = description;
+		this.totalPrice = totalPrice;
+		this.cookingTime = cookingTime;
+		this.preparationTime = preparationTime;
 	}
 
 	public Long getId() {
@@ -108,28 +117,29 @@ public class Recipe implements Serializable{
 		this.description = description;
 	}
 
-	public Timestamp getPreparationTime() {
-		return preparationTime;
-	}
-
-	public void setPreparationTime(Timestamp preparationTime) {
-		this.preparationTime = preparationTime;
-	}
-
-	public Timestamp getCookingTime() {
-		return cookingTime;
-	}
-
-	public void setCookingTime(Timestamp cookingTime) {
-		this.cookingTime = cookingTime;
-	}
-
 	public float getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
+	public LocalTime getPreparationTime() {
+		return preparationTime;
 	}
 
+	public void setPreparationTime(LocalTime preparationTime) {
+		this.preparationTime = preparationTime;
+	}
+
+	public LocalTime getCookingTime() {
+		return cookingTime;
+	}
+
+	public void setCookingTime(LocalTime cookingTime) {
+		this.cookingTime = cookingTime;
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
+	}	
+	
+	
 }

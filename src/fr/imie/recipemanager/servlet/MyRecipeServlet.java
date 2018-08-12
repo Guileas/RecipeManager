@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.imie.recipemanager.dao.DaoFactory;
 import fr.imie.recipemanager.dao.RecipeDao;
-import fr.imie.recipemanager.entity.User;
 
 @WebServlet("/myRecipe")
 public class MyRecipeServlet extends HttpServlet {

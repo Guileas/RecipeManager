@@ -13,18 +13,16 @@ import fr.imie.recipemanager.dao.DaoFactory;
 import fr.imie.recipemanager.dao.IngredientDao;
 import fr.imie.recipemanager.entity.Ingredient;
 
+@SuppressWarnings("serial")
 @WebServlet("/listIngredient")
 public class ListIngredientServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		IngredientDao idao = DaoFactory.getIngredientDao();
 		List<Ingredient> ingredients = idao.getAllIngredient();
-		for (Ingredient ingredient : ingredients) {
-			System.out.println("Mon ingredient : " + ingredient.getName());
-		}
+		
+		req.setAttribute("ingredients", ingredients);
 		req.getRequestDispatcher("/listIngredient.jsp").forward(req, resp);
 	}
 
