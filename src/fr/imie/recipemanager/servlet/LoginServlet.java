@@ -15,10 +15,11 @@ import fr.imie.recipemanager.dao.UserDao;
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	public static String pseudo = null;
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pseudo = req.getParameter("pseudo");
+		pseudo = req.getParameter("pseudo");
 		String password = req.getParameter("password");
 		String name = null;
 		String psd = null;
