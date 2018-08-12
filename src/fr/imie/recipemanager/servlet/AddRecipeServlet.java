@@ -2,9 +2,9 @@ package fr.imie.recipemanager.servlet;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,31 +23,21 @@ public class AddRecipeServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
 		
 		/*
 		 * Get form parameters
 		 */
 		SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 		Date parsedDate;
-		/*try {
-			parsedDate = (Date) dateFormat.parse(req.getParameter("cookingTime"));
-			Timestamp cookingTime = new java.sql.Timestamp(parsedDate.getTime());
-			
-			Date parsedPreparation = (Date) dateFormat.parse(req.getParameter("preparatonTime"));
-			Timestamp preparationTime = new java.sql.Timestamp(parsedPreparation.getTime());
-			
-			
-			
-		} catch (ParseException e) {
-			System.out.println("Conversion fail");
-		}*/
 		
-		Recipe recipe = new Recipe(req.getParameter("name"), req.getParameter("description"), req.getParameter("cookingTime"), 
-				req.getParameter("preparatonTime"), Float.parseFloat(req.getParameter("totalPrice")));
+		Recipe recipe = new Recipe(req.getParameter("name"),
+				req.getParameter("description"),
+				Float.parseFloat(req.getParameter("totalPrice")),
+				LocalTime.parse(req.getParameter("preparationTime"), dateTimeFormatter),
+				LocalTime.parse(req.getParameter("cookingTime"), dateTimeFormatter));
 		
-		/*
-		 * Db insertion
-		 */
 		RecipeDao recipeDao = DaoFactory.getRecipeDao();
 		recipeDao.addRecipe(recipe);
 		

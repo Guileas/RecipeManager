@@ -1,6 +1,7 @@
 package fr.imie.recipemanager.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.imie.recipemanager.dao.DaoFactory;
 import fr.imie.recipemanager.dao.RecipeDao;
-import fr.imie.recipemanager.entity.User;
+import fr.imie.recipemanager.entity.Ingredient;
+import fr.imie.recipemanager.entity.Recipe;
 
 @WebServlet("/myRecipe")
 public class MyRecipeServlet extends HttpServlet {
@@ -27,8 +29,9 @@ public class MyRecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		RecipeDao recipeDao = DaoFactory.getRecipeDao();
-		recipeDao.getAllRecipe();
+		List<Recipe> recipes = recipeDao.getAllRecipe();
 		
+		req.setAttribute("recipes", recipes);
 		req.getRequestDispatcher("/myRecipe.jsp").forward(req, resp);
 	}
 	

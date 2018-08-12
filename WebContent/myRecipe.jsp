@@ -27,12 +27,14 @@
 				</thead>
 				
 				<tbody>
-					<c:forEach var="r" items="${recipes}">
+					<c:forEach items="${recipes}" var="r" >
 							<tr onclick="location.href = 'http://localhost:8080/RecipeManager/detailRecipe?id=${r.id}';">
 								<th>${r.id}</th>
 								<td>${r.name}</td>
 								<td>${r.description}</td>
-								<td>${r.price}</td>
+								<td>${r.preparationTime}</td>
+								<td>${r.cookingTime}</td>
+								<td>${r.totalPrice}</td>
 								<c:if test="${!(empty sessionScope.username)}">
 									<td><button class="btn btn-danger" onclick="location.href = 'http://localhost:8080/RecipeManager/deleteRecipe?id=${r.id}';">Delete</button></td>
 								</c:if>
