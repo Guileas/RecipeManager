@@ -37,18 +37,20 @@ public class Recipe implements Serializable{
 
 	private String name;
 	private String description;
-	private Timestamp preparationTime;
-	private Timestamp cookingTime;
+	private String preparationTime;
+	private String cookingTime;
 	private float totalPrice;
 	
 	public Recipe() {
 		
 	}
 	
-	public Recipe(String name, String description, float totalPrice) {
+	public Recipe(String name, String description, String preparationTime, String cookingTime, float totalPrice) {
 		
 		this.name = name;
 		this.description = description;
+		this.preparationTime = preparationTime;
+		this.cookingTime = cookingTime;
 		this.totalPrice = totalPrice;
 	}
 
@@ -108,19 +110,19 @@ public class Recipe implements Serializable{
 		this.description = description;
 	}
 
-	public Timestamp getPreparationTime() {
+	public String getPreparationTime() {
 		return preparationTime;
 	}
 
-	public void setPreparationTime(Timestamp preparationTime) {
+	public void setPreparationTime(String preparationTime) {
 		this.preparationTime = preparationTime;
 	}
 
-	public Timestamp getCookingTime() {
+	public String getCookingTime() {
 		return cookingTime;
 	}
 
-	public void setCookingTime(Timestamp cookingTime) {
+	public void setCookingTime(String cookingTime) {
 		this.cookingTime = cookingTime;
 	}
 

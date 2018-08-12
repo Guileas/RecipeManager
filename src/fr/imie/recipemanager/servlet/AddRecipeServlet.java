@@ -42,7 +42,8 @@ public class AddRecipeServlet extends HttpServlet {
 			System.out.println("Conversion fail");
 		}*/
 		
-		Recipe recipe = new Recipe(req.getParameter("name"), req.getParameter("description"), Float.parseFloat(req.getParameter("totalPrice")));
+		Recipe recipe = new Recipe(req.getParameter("name"), req.getParameter("description"), req.getParameter("cookingTime"), 
+				req.getParameter("preparatonTime"), Float.parseFloat(req.getParameter("totalPrice")));
 		
 		/*
 		 * Db insertion

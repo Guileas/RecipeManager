@@ -5,6 +5,8 @@
 <title>Connexion</title>
 </head>
 <body>
+
+<%@ include file="header.jsp" %>
 <form method="post" action="/RecipeManager/login">
 	<label>Pseudo : </label>
 	<input type="text" name="pseudo" />
