@@ -41,7 +41,6 @@ public class Recipe implements Serializable {
 	private float totalPrice;
 
 	public Recipe() {
-
 	}
 
 	public Recipe(Long id, User userRecipe, List<Picture> pictures, List<Quantity> quantitys, List<Mark> marks,
@@ -131,10 +130,6 @@ public class Recipe implements Serializable {
 		this.description = description;
 	}
 
-	public float getTotalPrice() {
-		return totalPrice;
-	}
-
 	public LocalTime getPreparationTime() {
 		return preparationTime;
 	}
@@ -149,6 +144,10 @@ public class Recipe implements Serializable {
 
 	public void setCookingTime(LocalTime cookingTime) {
 		this.cookingTime = cookingTime;
+	}
+
+	public float getTotalPrice() {
+		return totalPrice;
 	}
 
 	public void setTotalPrice(float totalPrice) {

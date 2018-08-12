@@ -24,12 +24,12 @@ public class AddRecipeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
-
-		Recipe recipe = new Recipe(req.getParameter("name"), req.getParameter("description"),
+		Recipe recipe = new Recipe(req.getParameter("name"),
+				req.getParameter("description"),
 				Float.parseFloat(req.getParameter("totalPrice")),
 				LocalTime.parse(req.getParameter("preparationTime"), dateTimeFormatter),
 				LocalTime.parse(req.getParameter("cookingTime"), dateTimeFormatter));
-
+		
 		UserDao udao = DaoFactory.getUserDao();/*
 		System.out.println("id : " + udao.findUserByPseudo(LoginServlet.pseudo).getId());
 		System.out.println("firstname : " + udao.findUserByPseudo(LoginServlet.pseudo).getFirstname());
@@ -42,15 +42,14 @@ public class AddRecipeServlet extends HttpServlet {
 		} else {
 			RecipeDao recipeDao = DaoFactory.getRecipeDao();
 			recipeDao.addRecipe(recipe);
+			resp.sendRedirect("/RecipeManager/listTopRecipe");
 		}
-		resp.sendRedirect("/RecipeManager/myRecipe");
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/addRecipe.jsp").forward(req, resp);
 	}
-
 	/*
 	 * Get form parameters
 	 */

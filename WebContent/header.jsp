@@ -3,6 +3,7 @@
 <nav class="nav">
   	<c:if test="${empty sessionScope.username}">
 		<a class="nav-link active" href="/RecipeManager/login">login</a>
+		<a class="nav-link active" href="/RecipeManager/signIn">sign In</a>
   	</c:if>
   	<c:if test="${!(empty sessionScope.username)}">
 		<a class="nav-link active" href="/RecipeManager/addIngredient">Add a ingredient</a>
