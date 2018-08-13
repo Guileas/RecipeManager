@@ -29,7 +29,8 @@ public class DetailRecipeServlet extends HttpServlet {
 	
 		RecipeDao rdao = DaoFactory.getRecipeDao();
 		Recipe recipes = rdao.findRecipeById(Long.valueOf(req.getParameter("id")));
-
+		
+		
 		req.setAttribute("recipe", recipes);		
 		req.getRequestDispatcher("/detailRecipe.jsp").forward(req, resp);
 	}

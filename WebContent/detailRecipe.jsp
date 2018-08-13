@@ -15,6 +15,7 @@
 	<p>${recipe.getPreparationTime()}</p>
 	<p>${recipe.getCookingTime()}</p>
 	<p>${recipe.getTotalPrice()}</p>
+	
 </div>
 </body>
 </html>
