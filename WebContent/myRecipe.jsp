@@ -18,9 +18,8 @@
 					<tr>
 						<th>#</th>
 						<th>Name</th>
-						<th>Description</th>
 						<th>Price</th>
-						<c:if test="${!(empty sessionScope.username)}">
+						<c:if test="${!(empty sessionScope.pseudo)}">
 							<th></th>
 						</c:if>
 					</tr>
@@ -31,12 +30,9 @@
 							<tr onclick="location.href = 'http://localhost:8082/RecipeManager/detailRecipe?id=${r.id}';">
 								<th>${r.id}</th>
 								<td>${r.name}</td>
-								<td>${r.description}</td>
-								<td>${r.preparationTime}</td>
-								<td>${r.cookingTime}</td>
 								<td>${r.totalPrice}</td>
-								<c:if test="${!(empty sessionScope.username)}">
-									<td><button class="btn btn-danger" onclick="location.href = 'http://localhost:8080/RecipeManager/deleteRecipe?id=${r.id}';">Delete</button></td>
+								<c:if test="${!(empty sessionScope.pseudo)}">
+									<td><button class="btn btn-danger" onclick="location.href = 'http://localhost:8082/RecipeManager/deleteRecipe?id=${r.id}';">Delete</button></td>
 								</c:if>
 							</tr>
 					</c:forEach>
