@@ -8,12 +8,10 @@
   	<c:if test="${!(empty sessionScope.pseudo)}">
 		<a class="nav-link active" href="/RecipeManager/addIngredient">Add a ingredient</a>
 		<a class="nav-link active" href="/RecipeManager/addRecipe">Add recipe</a>
-  	</c:if>
-  	<a class="nav-link active" href="/RecipeManager/addIngredient">Add a ingredient</a>
-		<a class="nav-link active" href="/RecipeManager/addRecipe">Add recipe</a>
-  		<a class="nav-link" href="/RecipeManager/myRecipe">List of my recipe</a>
+		<a class="nav-link" href="/RecipeManager/myRecipe">List of my recipe</a>
+		<a class="nav-link" href="/RecipeManager/listIngredient">List of my ingredient</a>
   		<a class="nav-link" href="/RecipeManager/listTopRecipe">List top recipe</a>
-  		
+  	</c:if>
   	<c:if test="${!(empty sessionScope.pseudo)}">
   		<a class="nav-link" href="/RecipeManager/logout">Logout</a>
   	</c:if>
