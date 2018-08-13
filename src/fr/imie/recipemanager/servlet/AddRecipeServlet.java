@@ -42,7 +42,7 @@ public class AddRecipeServlet extends HttpServlet {
 		} else {
 			RecipeDao recipeDao = DaoFactory.getRecipeDao();
 			recipeDao.addRecipe(recipe);
-			resp.sendRedirect("/RecipeManager/listTopRecipe");
+			resp.sendRedirect("/RecipeManager/DetailRecipe");
 		}
 	}
 
