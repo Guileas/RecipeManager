@@ -12,7 +12,7 @@
   	<a class="nav-link active" href="/RecipeManager/addIngredient">Add a ingredient</a>
 		<a class="nav-link active" href="/RecipeManager/addRecipe">Add recipe</a>
   		<a class="nav-link" href="/RecipeManager/myRecipe">List of my recipe</a>
-  		<a class="nav-link" href="/RecipeManager/topRecipe">List top recipe</a>
+  		<a class="nav-link" href="/RecipeManager/listTopRecipe">List top recipe</a>
   		
   	<c:if test="${!(empty sessionScope.username)}">
   		<a class="nav-link" href="/RecipeManager/logout">Logout</a>

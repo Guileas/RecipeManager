@@ -8,5 +8,26 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<div>
+	<h1>My Recipe</h1>
+</div>
+<div>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Description</td>
+			</tr>
+		</thead>
+			<c:forEach items="${recipes}" var="r">
+				<tr>
+					<td><c:out value="${r.getId()}"></c:out></td>
+					<td><c:out value="${r.getName()}"></c:out></td>
+					<td><c:out value="${r.getDescription()}"></c:out></td>
+				</tr>
+			</c:forEach>
+	</table>
+</div>
 </body>
 </html>
