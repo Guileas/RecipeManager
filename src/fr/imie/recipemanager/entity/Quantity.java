@@ -17,6 +17,7 @@ public class Quantity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
 	@ManyToOne
 	@JoinColumn (name ="Recipe_fk")
 	private Recipe recipeQuantity;

@@ -29,11 +29,11 @@ public class DetailRecipeServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		/*
 		RecipeDao rdao = DaoFactory.getRecipeDao();
 		Recipe recipes = rdao.findRecipeById(id);
 		
-		req.setAttribute("recipes", recipes);		
+		req.setAttribute("recipes", recipes);	*/	
 		req.getRequestDispatcher("/detailRecipe.jsp").forward(req, resp);
 	}
 

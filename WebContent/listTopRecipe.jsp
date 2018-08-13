@@ -11,7 +11,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div>
-	<h1>My Ingredients list</h1>
+	<h1>My Recipes list</h1>
 </div>
 <div>
 	<table class="table">
@@ -20,15 +20,27 @@
 				<td>#</td>
 				<td>Name</td>
 				<td>Description</td>
+				<td>Preparation Time</td>
+				<td>Cooking Time</td>
+				<td>Mon ingredient</td>
+				<c:if test="${!(empty sessionScope.username)}">
+					<th></th>
+				</c:if>
+				
 			</tr>
 		</thead>
+		<tbody>
 			<c:forEach items="${recipes}" var="r">
 				<tr>
 					<td><c:out value="${r.getId()}"></c:out></td>
 					<td><c:out value="${r.getName()}"></c:out></td>
 					<td><c:out value="${r.getDescription()}"></c:out></td>
+					<td><c:out value="${r.getPreparationTime()}"></c:out></td>
+					<td><c:out value="${r.getCookingTime()}"></c:out></td>
+					<td><c:out value="${r.getCookingTime()}"></c:out></td>
 				</tr>
 			</c:forEach>
+		</tbody>
 	</table>
 </div>
 
