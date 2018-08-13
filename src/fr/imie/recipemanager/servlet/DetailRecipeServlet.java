@@ -20,9 +20,6 @@ public class DetailRecipeServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
 		/// Redirection à faire
 		resp.sendRedirect("/RecipeManager/listRecipe");
 	}
@@ -31,9 +28,9 @@ public class DetailRecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		RecipeDao rdao = DaoFactory.getRecipeDao();
-		Recipe recipes = rdao.findRecipeById(id);
+		Recipe recipes = rdao.findRecipeById(Long.valueOf(req.getParameter("id")));
 		
-		req.setAttribute("recipes", recipes);		
+		req.setAttribute("recipe", recipes);		
 		req.getRequestDispatcher("/detailRecipe.jsp").forward(req, resp);
 	}
 

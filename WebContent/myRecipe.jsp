@@ -28,7 +28,7 @@
 				
 				<tbody>
 					<c:forEach items="${recipes}" var="r" >
-							<tr onclick="location.href = 'http://localhost:8080/RecipeManager/detailRecipe?id=${r.id}';">
+							<tr onclick="location.href = 'http://localhost:8082/RecipeManager/detailRecipe?id=${r.id}';">
 								<th>${r.id}</th>
 								<td>${r.name}</td>
 								<td>${r.description}</td>

@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,22 +10,11 @@
 	<h1>My Recipe</h1>
 </div>
 <div>
-	<table class="table">
-		<thead class="thead-dark">
-			<tr>
-				<td>#</td>
-				<td>Name</td>
-				<td>Description</td>
-			</tr>
-		</thead>
-			<c:forEach items="${recipes}" var="r">
-				<tr>
-					<td><c:out value="${r.getId()}"></c:out></td>
-					<td><c:out value="${r.getName()}"></c:out></td>
-					<td><c:out value="${r.getDescription()}"></c:out></td>
-				</tr>
-			</c:forEach>
-	</table>
+	<h1>${recipe.getName()}</h1>
+	<p>${recipe.getDescription()}</p>
+	<p>${recipe.getPreparationTime()}</p>
+	<p>${recipe.getCookingTime()}</p>
+	<p>${recipe.getTotalPrice()}</p>
 </div>
 </body>
 </html>
