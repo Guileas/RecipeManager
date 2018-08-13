@@ -28,7 +28,7 @@ public class DetailRecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		RecipeDao rdao = DaoFactory.getRecipeDao();
-		Recipe recipes = rdao.findRecipeById(Long.valueOf(req.getParameter("id")));
+		Recipe recipes = rdao.findRecipeById(Long.parseLong(req.getParameter("id")));
 
 		req.setAttribute("recipe", recipes);		
 		req.getRequestDispatcher("/detailRecipe.jsp").forward(req, resp);
