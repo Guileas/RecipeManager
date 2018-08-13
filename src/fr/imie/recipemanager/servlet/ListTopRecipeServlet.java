@@ -22,7 +22,6 @@ public class ListTopRecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RecipeDao rdao = DaoFactory.getRecipeDao();
 		List<Recipe> recipes = rdao.getAllRecipe();
-		
 		req.setAttribute("recipes", recipes);
 		req.getRequestDispatcher("/listTopRecipe.jsp").forward(req, resp);
 	}
