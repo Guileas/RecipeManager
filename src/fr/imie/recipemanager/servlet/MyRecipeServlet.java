@@ -30,8 +30,9 @@ public class MyRecipeServlet extends HttpServlet {
 				String msg = "You need to log you, please clik on 'LogIn'";
 				jop.showMessageDialog(null, msg);
 			} else {
+				System.out.println(udao.findUserByPseudo(LoginServlet.pseudo).getId().toString());
 				RecipeDao recipeDao = DaoFactory.getRecipeDao();
-				List<Recipe> recipes = recipeDao.getAllUserRecipe(udao.findUserByPseudo(LoginServlet.pseudo).getId());
+				List<Recipe> recipes = recipeDao.getAllUserRecipe((Long)udao.findUserByPseudo(LoginServlet.pseudo).getId());
 				req.setAttribute("recipes", recipes);
 			}
 		} catch (Exception e) {

@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import org.hibernate.QueryException;
+
 import fr.imie.recipemanager.dao.RecipeDao;
 import fr.imie.recipemanager.entity.Recipe;
 
@@ -53,9 +55,17 @@ public class JpaRecipeDao implements RecipeDao {
 	@Override
 	public List<Recipe> getAllUserRecipe(long id) {
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("SELECT r FROM Recipe AS r WHERE r.User_fk = :id");
-		query.setParameter("id", id);
-		List<Recipe> recipes = query.getResultList();
+		List<Recipe> recipes = null;
+		try {
+			Query query = em.createQuery("SELECT r FROM Recipe AS r WHERE r.userRecipe = :id");
+			query.setParameter("id", id);
+			recipes = query.getResultList();
+			for (Recipe recipe : recipes) {
+				System.out.println("L'utilisateur" + recipe.getUserRecipe().getLastname());
+			}
+		} catch (QueryException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		em.close();
 		return recipes;
