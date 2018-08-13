@@ -3,6 +3,7 @@ package fr.imie.recipemanager.servlet;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 import fr.imie.recipemanager.dao.DaoFactory;
+import fr.imie.recipemanager.dao.IngredientDao;
 import fr.imie.recipemanager.dao.RecipeDao;
 import fr.imie.recipemanager.dao.UserDao;
+import fr.imie.recipemanager.entity.Ingredient;
 import fr.imie.recipemanager.entity.Recipe;
 
 @WebServlet("/addRecipe")
@@ -30,19 +35,15 @@ public class AddRecipeServlet extends HttpServlet {
 				LocalTime.parse(req.getParameter("preparationTime"), dateTimeFormatter),
 				LocalTime.parse(req.getParameter("cookingTime"), dateTimeFormatter));
 		
-		UserDao udao = DaoFactory.getUserDao();/*
-		System.out.println("id : " + udao.findUserByPseudo(LoginServlet.pseudo).getId());
-		System.out.println("firstname : " + udao.findUserByPseudo(LoginServlet.pseudo).getFirstname());
-		System.out.println("lastname : " + udao.findUserByPseudo(LoginServlet.pseudo).getLastname());
-		System.out.println("peudo : " + udao.findUserByPseudo(LoginServlet.pseudo).getPseudo());*/
+		UserDao udao = DaoFactory.getUserDao();
 		
-		// recipe.setUserRecipe(udao.findUserByPseudo(LoginServlet.pseudo));
 		if (udao.findUserByPseudo(LoginServlet.pseudo).getId() == null) {
 			resp.sendRedirect("/RecipeManager/login");
 		} else {
 			RecipeDao recipeDao = DaoFactory.getRecipeDao();
+			recipe.setUserRecipe(udao.findUserByPseudo(LoginServlet.pseudo));
 			recipeDao.addRecipe(recipe);
-			resp.sendRedirect("/RecipeManager/DetailRecipe");
+			resp.sendRedirect("/RecipeManager/detailRecipe");
 		}
 	}
 
