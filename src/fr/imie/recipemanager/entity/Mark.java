@@ -31,6 +31,10 @@ public class Mark implements Serializable{
 		
 	}
 
+	public Mark(Float mark) {
+		this.mark = mark;
+	}
+
 	public long getId() {
 		return id;
 	}

@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.imie.recipemanager.dao.DaoFactory;
+import fr.imie.recipemanager.dao.MarkDao;
 import fr.imie.recipemanager.dao.RecipeDao;
+import fr.imie.recipemanager.entity.Mark;
 import fr.imie.recipemanager.entity.Recipe;
 
 @WebServlet("/detailRecipe")
@@ -20,7 +22,9 @@ public class DetailRecipeServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/// Redirection à faire
+		MarkDao markDao = DaoFactory.getMarkDao();
+		Mark mark = new Mark(Float.parseFloat(req.getParameter("listeDeroulante")));
+		markDao.addMark(mark);
 		resp.sendRedirect("/RecipeManager/listRecipe");
 	}
 	
