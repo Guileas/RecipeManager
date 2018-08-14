@@ -32,7 +32,7 @@ public class MyRecipeServlet extends HttpServlet {
 			} else {
 				System.out.println(udao.findUserByPseudo(LoginServlet.pseudo).getId().toString());
 				RecipeDao recipeDao = DaoFactory.getRecipeDao();
-				List<Recipe> recipes = recipeDao.getAllUserRecipe((Long)udao.findUserByPseudo(LoginServlet.pseudo).getId());
+				List<Recipe> recipes = recipeDao.getAllUserRecipe(udao.findUserByPseudo(LoginServlet.pseudo).getId());
 				req.setAttribute("recipes", recipes);
 			}
 		} catch (Exception e) {

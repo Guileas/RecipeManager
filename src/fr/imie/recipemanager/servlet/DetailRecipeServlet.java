@@ -1,7 +1,6 @@
 package fr.imie.recipemanager.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +19,6 @@ public class DetailRecipeServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/// Redirection à faire
 		resp.sendRedirect("/RecipeManager/listRecipe");
 	}
 	

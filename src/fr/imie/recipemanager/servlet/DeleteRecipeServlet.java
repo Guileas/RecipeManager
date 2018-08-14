@@ -13,29 +13,27 @@ import fr.imie.recipemanager.dao.RecipeDao;
 import fr.imie.recipemanager.entity.Recipe;
 
 @WebServlet("/deleteRecipe")
-public class DeleteRecipeServlet extends HttpServlet{
+public class DeleteRecipeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 	}
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		RecipeDao recipeDao = DaoFactory.getRecipeDao();
-		Recipe r = recipeDao.findRecipeById(Long.valueOf(req.getParameter("id")));
-		
+		Recipe r = recipeDao.findRecipeById(Long.parseLong(req.getParameter("id")));
+		Long id = Long.parseLong(req.getParameter("id"));
+		System.out.println(id.toString());
 		if (r != null) {
+			System.out.println("Nom du produit à supprimer : " + r.getName());
 			recipeDao.removeRecipe(r);
-			resp.sendRedirect("/RecipeManager/myRecipe");
 		} else {
 			resp.getWriter().println("Cet id n'est pas en base de donnée :/");
 		}
-		
+		resp.sendRedirect("/RecipeManager/listTopRecipe");
 	}
 }

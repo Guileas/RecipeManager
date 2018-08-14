@@ -24,7 +24,7 @@
 					<td>#</td>
 					<td>Name</td>
 					<td>Total Price</td>
-					<td>Mon ingredient</td>
+					<td>Delete</td>
 					<c:if test="${!(empty sessionScope.username)}">
 						<th></th>
 					</c:if>
@@ -43,10 +43,12 @@
 						<td
 							onclick="location.href = 'http://localhost:8082/RecipeManager/detailRecipe?id=${r.id}';"><c:out
 								value="${r.getTotalPrice()}"></c:out></td>
-						<c:if test="${!(empty sessionScope.pseudo)}">
-							<td><button class="btn btn-danger"
-									onclick="location.href = 'http://localhost:8082/RecipeManager/deleteRecipe?id=${r.id}';">Delete</button></td>
-						</c:if>
+						<td>
+							<form method="get" action="deleteRecipe" >
+								<input type="hidden" name="id" value="${r.getId()}">
+								<button type="submit" value="Delete"></button>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
