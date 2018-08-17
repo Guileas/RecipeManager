@@ -8,10 +8,10 @@
 <body>
 
 <%@ include file="header.jsp" %>
-<form action="/RecipeManager/addIngredient" method="post" class="form-group">
-			<input name="name" type="text" placeholder="Ingredient Name" class="form-control" required/>
-			<input name="price" type="number" step="0.01" placeholder="Ingredient price" class="form-control" required/>
-			<input type="submit" value="Send" class="btn btn-primary btn-form"/>
-		</form>
+	<form action="/RecipeManager/addIngredient" method="post" class="form-group">
+		<input name="name" type="text" placeholder="Ingredient Name" class="form-control" required/>
+		<input name="price" type="number" step="0.01" placeholder="Ingredient price" class="form-control" required/>
+		<input type="submit" value="Send" class="btn btn-primary btn-form"/>
+	</form>
 </body>
 </html>

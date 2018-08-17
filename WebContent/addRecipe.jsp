@@ -43,11 +43,11 @@
 					<th><c:out value="${i.getName()}"></c:out></th>
 					<th><c:out value="${i.getPrice()}"></c:out></th>
 					<th>
-					<form method="post" action="addRecipe">
-						<input type="hidden" name="id" value="${i.getId()}">
-						<button name="addButton" type="submit" value="Add Ingredient"></button>
-					</form>
-				</th>
+						<form method="post" action="addRecipe">
+							<input type="hidden" name="id" value="${i.getId()}">
+							<button name="addButton" type="submit" value="Add Ingredient"></button>
+						</form>
+					</th>
 				<OPTION value="${i.getName()}">
 				</c:forEach>
 			</SELECT></th>

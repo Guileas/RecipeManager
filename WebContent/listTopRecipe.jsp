@@ -15,7 +15,7 @@
 <body>
 	<%@ include file="header.jsp"%>
 	<div>
-		<h1>My Recipes list</h1>
+		<h1>Top recipes list</h1>
 	</div>
 	<div>
 		<table class="table">
@@ -43,12 +43,6 @@
 						<td
 							onclick="location.href = 'http://localhost:8082/RecipeManager/detailRecipe?id=${r.id}';"><c:out
 								value="${r.getTotalPrice()}"></c:out></td>
-						<td>
-							<form method="get" action="deleteRecipe" >
-								<input type="hidden" name="id" value="${r.getId()}">
-								<button type="submit" value="Delete"></button>
-							</form>
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

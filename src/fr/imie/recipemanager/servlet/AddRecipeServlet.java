@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.enterprise.context.SessionScoped;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,21 +24,15 @@ import fr.imie.recipemanager.entity.Recipe;
 public class AddRecipeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private Ingredient ingredient = new Ingredient();
-	private List<Ingredient> ingredients = null;
+	private static Ingredient ingredient = new Ingredient();
+	private static IngredientDao idao = DaoFactory.getIngredientDao();
+	public static List<Ingredient> ingredients = null;
 
 	@SuppressWarnings("null")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+
 		List<Quantity> quantities = null;
-		/// List<Mark> marks = null;
-		
-		IngredientDao idao = DaoFactory.getIngredientDao();
-		List<Ingredient> is = idao.getAllIngredient();
-		ingredient = idao.findIngredientById(Long.parseLong(req.getParameter("id")));
-		ingredients.add(ingredient);
 
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
 
@@ -62,14 +57,14 @@ public class AddRecipeServlet extends HttpServlet {
 					quantity.setIngredient(i);
 				}
 			}
-
 			resp.sendRedirect("/RecipeManager/myRecipe");
 		}
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				
+		String test = req.getParameter("currentIngredient");
+		System.out.println(test);
 		req.getRequestDispatcher("/addRecipe.jsp").forward(req, resp);
 	}
 }

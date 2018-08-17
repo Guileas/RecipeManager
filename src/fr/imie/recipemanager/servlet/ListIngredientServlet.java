@@ -21,6 +21,7 @@ public class ListIngredientServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		IngredientDao idao = DaoFactory.getIngredientDao();
 		List<Ingredient> ingredients = idao.getAllIngredient();
+		List<Ingredient> currentIngredient = null;
 		
 		req.setAttribute("ingredients", ingredients);
 		req.getRequestDispatcher("/listIngredient.jsp").forward(req, resp);

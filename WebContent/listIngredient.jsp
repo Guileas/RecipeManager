@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="fr.imie.recipemanager.dao.DaoFactory"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page import="fr.imie.recipemanager.servlet.ListIngredientServlet" %>
 <%@ page import="fr.imie.recipemanager.entity.Ingredient" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -32,20 +35,33 @@
 			</tr>
 		</thead>
 		<tbody>
+		<tr>
+		<%List<Ingredient> currentIngredient = null; %>
 			<c:forEach items="${ingredients}" var="i">
-				<tr>
-					<th><c:out value="${i.getId()}"></c:out></th>
-					<th><c:out value="${i.getName()}"></c:out></th>
-					<th><c:out value="${i.getPrice()}"></c:out></th>
+				<th><c:out value="${i.getId()}"></c:out></th>
+				<th><c:out value="${i.getName()}"></c:out></th>
+				<th><c:out value="${i.getPrice()}"></c:out></th>
 					<th>
-						<form method="get" action="deleteIngredient" >
-							<input type="hidden" name="id" value="${i.getId()}">
-							<button type="submit" value="Delete"></button>
+						<form method="get" action="deleteRecipe" >
+								<input type="hidden" name="id" value="${r.getId()}">
+								<button type="submit" value="Delete" class="btn btn-danger">DELETTE</button>
 						</form>
 					</th>
-				</tr>
-				
+					<th><input name="checkbox" type="checkbox" value="${i.getId()}"/></th>
 			</c:forEach>
+		</tr>
+		<tr></tr>
+		<tr>
+			<c:forEach items="${ingredients}" var="i">
+				<c:if test="${(checkbox.checked == 'checked')}">
+					<c:set var="currentIngredient" value="currentIngredient.add(i)"></c:set>
+				</c:if>
+			</c:forEach>
+			<th><form method="get" action="addRecipe">
+				<input type=hidden value="${currentIngredient}">
+				<button type="submit">Add a recipe</button>
+			</form></th>			
+		</tr>
 		</tbody>
 	</table>
 </div>

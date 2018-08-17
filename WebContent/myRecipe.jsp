@@ -11,7 +11,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div>
-			<h1>Recipes</h1>
+			<h1>My recipes</h1>
 		</div>
 		
 		<div>
@@ -23,6 +23,8 @@
 						<th>#</th>
 						<th>Name</th>
 						<th>Price</th>
+						<th>Manage recipe</th>
+						<th>Delete recipe</th>
 						<c:if test="${!(empty sessionScope.pseudo)}">
 							<th></th>
 						</c:if>
@@ -38,16 +40,22 @@
 								<c:out value="${r.getName()}"></c:out></th>
 								<th onclick="location.href = 'http://localhost:8082/RecipeManager/detailRecipe?id=${r.id}';">
 								<c:out value="${r.getTotalPrice()}"></c:out></th>
+								<th></th>
 								<c:if test="${!(empty sessionScope.pseudo)}">
 									<th>
 										<form method="get" action="deleteRecipe" >
 											<input type="hidden" name="id" value="${r.getId()}">
-											<button type="submit" value="Delete" class="btn btn-danger"></button>
+											<button type="submit" value="Delete" class="btn btn-danger">DELETTE</button>
 										</form>
 									</th>
 								</c:if>
 							</tr>
 					</c:forEach>
+					<tr>
+						<th>
+							<a type="button" class="btn" href="/RecipeManager/addIngredient">Add a new Recipe</a>
+						</th>
+					</tr>
 				</tbody>
 				
 			</table>

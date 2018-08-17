@@ -60,7 +60,6 @@ public class JpaRecipeDao implements RecipeDao {
 		try {
 			Query query = em.createQuery("SELECT r FROM Recipe AS r WHERE r.userRecipe = :currentUser");
 			System.out.println("ceci est un test");
-			int test = currentUser.getId().intValue();
 			query.setParameter("currentUser", currentUser);
 			System.out.println("Mon id est : " + currentUser.getId());
 			recipes = (List<Recipe>)query.getResultList();

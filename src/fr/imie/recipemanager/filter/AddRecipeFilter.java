@@ -11,33 +11,35 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter("/*")
-public class AuthentificationFilter implements Filter {
+import fr.imie.recipemanager.servlet.AddRecipeServlet;
+
+@WebFilter("/addRecipe")
+public class AddRecipeFilter implements Filter {
 
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		if ((req.getSession().getAttribute("pseudo") != null) || (req.getRequestURI().equals("/RecipeManager/login")) || (req.getRequestURI().equals("/RecipeManager/signIn"))) {
-			filter.doFilter(req, response);
-			
-		} else {
-			req.getRequestDispatcher("/login.jsp").forward(req, response);
-			System.out.println("No user found");
+		try {
+			if (AddRecipeServlet.ingredients.equals(null)) {
+				filter.doFilter(req, response);
+			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
 		}
-		
+		req.getRequestDispatcher("/listIngredient").forward(req, response);
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
