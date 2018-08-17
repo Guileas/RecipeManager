@@ -12,7 +12,7 @@ import fr.imie.recipemanager.dao.DaoFactory;
 import fr.imie.recipemanager.dao.IngredientDao;
 import fr.imie.recipemanager.entity.Ingredient;
 
-@WebServlet("deleteIngredient")
+@WebServlet("/deleteIngredient")
 public class DeleteIngredientServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class DeleteIngredientServlet extends HttpServlet {
 		if (i != null) {
 			idao.removeIngredient(i);
 		}
-		resp.sendRedirect("RecipeManager/listIngredient");
+		resp.sendRedirect("/RecipeManager/listIngredient");
 	}
 
 }

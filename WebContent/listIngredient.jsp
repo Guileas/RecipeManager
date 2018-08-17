@@ -21,24 +21,30 @@
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<td>#</td>
-				<td>Name</td>
-				<td>Price</td>
+				<th>#</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Delete an ingredient</th>
+				<th>Choose ingredients for your recipe</th>
+				<c:if test="${!(empty sessionScope.username)}">
+				<th></th>
+				</c:if>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${ingredients}" var="i">
 				<tr>
-					<td><c:out value="${i.getId()}"></c:out></td>
-					<td><c:out value="${i.getName()}"></c:out></td>
-					<td><c:out value="${i.getPrice()}"></c:out></td>
-					<td>
+					<th><c:out value="${i.getId()}"></c:out></th>
+					<th><c:out value="${i.getName()}"></c:out></th>
+					<th><c:out value="${i.getPrice()}"></c:out></th>
+					<th>
 						<form method="get" action="deleteIngredient" >
-							<input type="hidden" name="id" value="${r.getId()}">
+							<input type="hidden" name="id" value="${i.getId()}">
 							<button type="submit" value="Delete"></button>
 						</form>
-					</td>
+					</th>
 				</tr>
+				
 			</c:forEach>
 		</tbody>
 	</table>

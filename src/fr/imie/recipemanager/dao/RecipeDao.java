@@ -2,6 +2,7 @@ package fr.imie.recipemanager.dao;
 
 import java.util.List;
 
+import fr.imie.recipemanager.entity.User;
 import fr.imie.recipemanager.entity.Recipe;
 
 /*
@@ -11,7 +12,7 @@ public interface RecipeDao {
 
 	void addRecipe(Recipe r);
 	List<Recipe> getAllRecipe();
-	List<Recipe> getAllUserRecipe(long id);
-	Recipe findRecipeById(long id);
+	List<Recipe> getAllUserRecipe(User currentUser);
+	Recipe findRecipeById(Long id);
 	void removeRecipe(Recipe r);
 }
