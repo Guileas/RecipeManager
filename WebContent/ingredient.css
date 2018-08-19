@@ -1,0 +1,10 @@
+.title {
+	margin-left: 300px;
+}, 
+.form-control{
+	display: flex;
+	flex-wrap: wrap;
+},
+.btn-btn-primary-btn-form{
+	margin-left: 250px;
+}, 
