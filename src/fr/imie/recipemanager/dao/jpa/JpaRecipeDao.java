@@ -89,6 +89,8 @@ public class JpaRecipeDao implements RecipeDao {
 			if(!em.contains(r)) {
 				r = em.merge(r);
 			}
+			em.remove(r);
+			t.commit();
 		}finally {
 			if(t.isActive()) {
 				t.rollback();

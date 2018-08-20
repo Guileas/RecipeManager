@@ -1,7 +1,6 @@
 package fr.imie.recipemanager.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +21,7 @@ public class DetailRecipeServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(req.getParameter("listeDeroulante"));
 		MarkDao markDao = DaoFactory.getMarkDao();
 		Mark mark = new Mark(Float.parseFloat(req.getParameter("listeDeroulante")));
 		markDao.addMark(mark);
@@ -32,9 +32,8 @@ public class DetailRecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		RecipeDao rdao = DaoFactory.getRecipeDao();
-		Recipe recipes = rdao.findRecipeById(Long.valueOf(req.getParameter("id")));
-		
-		
+		Recipe recipes = rdao.findRecipeById(Long.parseLong(req.getParameter("id")));
+
 		req.setAttribute("recipe", recipes);		
 		req.getRequestDispatcher("/detailRecipe.jsp").forward(req, resp);
 	}

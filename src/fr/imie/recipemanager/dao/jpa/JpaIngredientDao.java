@@ -72,6 +72,8 @@ public class JpaIngredientDao implements IngredientDao {
 			if(!em.contains(i)) {
 				i = em.merge(i);
 			}
+			em.remove(i);
+			t.commit();
 		}finally {
 			if(t.isActive()) {
 				t.rollback();

@@ -90,12 +90,4 @@ public class JpaUserDao implements UserDao {
 		em.close();
 		return u;
 	}
-	
-	/*
-	 * *Query query = em.createQuery("SELECT cat FROM Cat AS cat WHERE cat.animalId = :id");
-query.setParameter("id", 5);
-Cat myCat = (Cat)query.getSingleResult();
-
-	 * 
-	 */
 }

@@ -1,7 +1,6 @@
 package fr.imie.recipemanager.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.imie.recipemanager.dao.DaoFactory;
-import fr.imie.recipemanager.dao.RecipeDao;
-import fr.imie.recipemanager.entity.Recipe;
+import fr.imie.recipemanager.dao.IngredientDao;
+import fr.imie.recipemanager.entity.Ingredient;
 
-@WebServlet("/listTopRecipe")
-public class ListTopRecipeServlet extends HttpServlet {
-
+@WebServlet("/deleteIngredient")
+public class DeleteIngredientServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RecipeDao rdao = DaoFactory.getRecipeDao();
-		List<Recipe> recipes = rdao.getAllRecipe();
-
-		req.setAttribute("recipes", recipes);
-		req.getRequestDispatcher("/listTopRecipe.jsp").forward(req, resp);
+		IngredientDao idao = DaoFactory.getIngredientDao();
+		Ingredient i = idao.findIngredientById(Long.parseLong(req.getParameter("id")));
+		if (i != null) {
+			idao.removeIngredient(i);
+		}
+		resp.sendRedirect("RecipeManager/listIngredient");
 	}
+
 }
