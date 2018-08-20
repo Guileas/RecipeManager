@@ -5,13 +5,16 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="ingredient.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ListIngredient</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 <div>
-	<h1>My Ingredients list</h1>
+<br>
+	<h1 class="title">My Ingredients list</h1>
+<br>
 </div>
 <div>
 	<table class="table">
