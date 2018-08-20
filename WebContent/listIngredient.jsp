@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="fr.imie.recipemanager.dao.DaoFactory"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page import="fr.imie.recipemanager.servlet.ListIngredientServlet" %>
 <%@ page import="fr.imie.recipemanager.entity.Ingredient" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -28,25 +31,47 @@
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<td>#</td>
-				<td>Name</td>
-				<td>Price</td>
+				<th>#</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Delete an ingredient</th>
+				<th>Choose ingredients for your recipe</th>
+				<c:if test="${!(empty sessionScope.username)}">
+				<th></th>
+				</c:if>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${ingredients}" var="i">
-				<tr>
-					<td><c:out value="${i.getId()}"></c:out></td>
-					<td><c:out value="${i.getName()}"></c:out></td>
-					<td><c:out value="${i.getPrice()}"></c:out></td>
-					<td>
-						<form method="get" action="deleteIngredient" >
-							<input type="hidden" name="id" value="${r.getId()}">
-							<button type="submit" value="Delete"></button>
-						</form>
-					</td>
-				</tr>
+			<tr>
+				<th><c:out value="${i.getId()}"></c:out></th>
+				<th><c:out value="${i.getName()}"></c:out></th>
+				<th><c:out value="${i.getPrice()}"></c:out></th>
+				<th>
+					<form method="get" action="deleteRecipe" >
+							<input type="hidden" name="id" value="${i.getId()}">
+							<button type="submit" value="Delete" class="btn btn-danger">DELETTE</button>
+					</form>
+				</th>
+				<th>
+					<input name="checkbox" type="checkbox" value="${i.getId()}"/>
+
+				</th>
+			</tr>
 			</c:forEach>
+		
+		<tr></tr>	
+			<c:forEach items="${ingredients}" var="i">
+			<tr>
+				<th>
+					<form method="post" action="addRecipe">
+						<input type=hidden value="${currentIngredient}">
+						<button type="submit" onclick="addRecipe">Add a recipe</button>
+					</form>
+				</th>			
+			</tr>
+			</c:forEach>
+
 		</tbody>
 	</table>
 </div>

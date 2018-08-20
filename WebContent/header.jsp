@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
   	<c:if test="${empty sessionScope.pseudo}">
-		<a class="nav-link active" href="/RecipeManager/login">login</a>
+		<a class="nav-link" href="/RecipeManager/login">login</a>
 		<a class="nav-link active" href="/RecipeManager/signIn">sign In</a>
   	</c:if>
   	<c:if test="${!(empty sessionScope.pseudo)}">

@@ -40,11 +40,14 @@
 						<td
 							onclick="location.href = 'http://localhost:8082/RecipeManager/detailRecipe?id=${r.id}';"><c:out
 								value="${r.getTotalPrice()}"></c:out></td>
+<<<<<<< HEAD
 
 						<c:if test="${!(empty sessionScope.pseudo)}">
 							<td><button class="btn btn-danger"
 									onclick="location.href = 'http://localhost:8082/RecipeManager/deleteRecipe?id=${r.id}';">Delete</button></td>
 						</c:if>
+=======
+>>>>>>> origin/coco
 					</tr>
 				</c:forEach>
 			</tbody>

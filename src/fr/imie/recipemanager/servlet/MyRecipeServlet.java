@@ -14,6 +14,7 @@ import fr.imie.recipemanager.dao.DaoFactory;
 import fr.imie.recipemanager.dao.RecipeDao;
 import fr.imie.recipemanager.dao.UserDao;
 import fr.imie.recipemanager.entity.Recipe;
+import fr.imie.recipemanager.entity.User;
 
 @WebServlet("/myRecipe")
 public class MyRecipeServlet extends HttpServlet {
@@ -21,22 +22,28 @@ public class MyRecipeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, NullPointerException {
 		UserDao udao = DaoFactory.getUserDao();
+		User u = udao.findUserByPseudo((LoginServlet.pseudo));
 		try {
-			if (udao.findUserByPseudo(LoginServlet.pseudo).getId() == null) {
+			if (u.getId().equals(null)) {
 				System.out.println("It's null");
-				JOptionPane jop = new JOptionPane();
 				String msg = "You need to log you, please clik on 'LogIn'";
-				jop.showMessageDialog(null, msg);
+				JOptionPane.showMessageDialog(null, msg);
 			} else {
-				System.out.println(udao.findUserByPseudo(LoginServlet.pseudo).getId().toString());
+				System.out.println("Mon id : " + udao.findUserByPseudo(LoginServlet.pseudo).getId().toString());
 				RecipeDao recipeDao = DaoFactory.getRecipeDao();
-				List<Recipe> recipes = recipeDao.getAllUserRecipe(udao.findUserByPseudo(LoginServlet.pseudo).getId());
+				List<Recipe> recipes = recipeDao.getAllUserRecipe(u);
+				if (recipes == null) {
+					System.out.println("Mes recettes sont vides !!!");
+				}
+				for (Recipe recipe : recipes) {
+					System.out.println("Ma recette : " + recipe.getName());
+				}
 				req.setAttribute("recipes", recipes);
 			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("Message d'erreur du doGet : " + e.getMessage());
 		}
 
 		req.getRequestDispatcher("/myRecipe.jsp").forward(req, resp);

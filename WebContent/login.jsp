@@ -28,7 +28,9 @@
 				</div>
 		</div>
 	</div>
+	
   </div>
+  <a class="nav-link active" href="/RecipeManager/signIn">sign In</a>
 </form>
 </body>
 </html>

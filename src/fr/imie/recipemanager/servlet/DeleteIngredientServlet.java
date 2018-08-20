@@ -24,7 +24,7 @@ public class DeleteIngredientServlet extends HttpServlet {
 		if (i != null) {
 			idao.removeIngredient(i);
 		}
-		resp.sendRedirect("RecipeManager/listIngredient");
+		resp.sendRedirect("/RecipeManager/listIngredient");
 	}
 
 }
