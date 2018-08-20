@@ -15,21 +15,27 @@ public class Quantity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@ManyToOne
-	@JoinColumn (name ="Recipe_fk")
+	@JoinColumn(name = "Recipe_fk")
 	private Recipe recipeQuantity;
-	
+
 	@ManyToOne
-	@JoinColumn (name ="Ingredient_fk")
+	@JoinColumn(name = "Ingredient_fk")
 	private Ingredient ingredient;
-	
+
 	private float quantity;
 	private String unit;
-	
+
 	public Quantity() {
-		
+
+	}
+
+	public Quantity(float quantity, String unit) {
+		this.quantity = quantity;
+		this.unit = unit;
 	}
 
 	public Long getId() {
@@ -71,5 +77,5 @@ public class Quantity implements Serializable {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	
+
 }

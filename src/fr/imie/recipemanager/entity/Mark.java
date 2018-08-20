@@ -15,7 +15,7 @@ public class Mark implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 	private float mark;
 	
@@ -29,6 +29,10 @@ public class Mark implements Serializable{
 	
 	public Mark() {
 		
+	}
+
+	public Mark(Float mark) {
+		this.mark = mark;
 	}
 
 	public long getId() {

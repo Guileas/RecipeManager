@@ -1,7 +1,7 @@
 package fr.imie.recipemanager.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,37 +12,66 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
-public class Recipe implements Serializable{
+public class Recipe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-	
-	@ManyToOne
-	@JoinColumn (name ="User_fk")
-	private User userRecipe;
-	
-	@OneToMany (mappedBy="recipePicture")
-    private List<Picture> pictures;
-	
-	@OneToMany (mappedBy="recipeQuantity")
-    private List<Quantity> quantitys;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	@OneToMany (mappedBy="recipeMark")
-    private List<Mark> marks;
+	@ManyToOne
+	@JoinColumn(name = "User_fk")
+	private User userRecipe;
+
+	@OneToMany(mappedBy = "recipePicture")
+	private List<Picture> pictures;
+
+	@OneToMany(mappedBy = "recipeQuantity")
+	private List<Quantity> quantitys;
+
+	@OneToMany(mappedBy = "recipeMark")
+	private List<Mark> marks;
 
 	private String name;
 	private String description;
-	private Time preparationTime;
-	private Time cookingTime;
+	private LocalTime preparationTime;
+	private LocalTime cookingTime;
 	private float totalPrice;
-	
+
 	public Recipe() {
-		
+	}
+
+	public Recipe(Long id, User userRecipe, List<Picture> pictures, List<Quantity> quantitys, List<Mark> marks,
+			String name, String description, LocalTime preparationTime, LocalTime cookingTime, float totalPrice) {
+		super();
+		this.id = id;
+		this.userRecipe = userRecipe;
+		this.pictures = pictures;
+		this.quantitys = quantitys;
+		this.marks = marks;
+		this.name = name;
+		this.description = description;
+		this.preparationTime = preparationTime;
+		this.cookingTime = cookingTime;
+		this.totalPrice = totalPrice;
+	}
+
+	public Recipe(String name, String description, float totalPrice) {
+
+		this.name = name;
+		this.description = description;
+		this.totalPrice = totalPrice;
+	}
+
+	public Recipe(String name, String description, float totalPrice, LocalTime preparationTime, LocalTime cookingTime) {
+
+		this.name = name;
+		this.description = description;
+		this.totalPrice = totalPrice;
+		this.cookingTime = cookingTime;
+		this.preparationTime = preparationTime;
 	}
 
 	public Long getId() {
@@ -101,19 +130,19 @@ public class Recipe implements Serializable{
 		this.description = description;
 	}
 
-	public Time getPreparationTime() {
+	public LocalTime getPreparationTime() {
 		return preparationTime;
 	}
 
-	public void setPreparationTime(Time preparationTime) {
+	public void setPreparationTime(LocalTime preparationTime) {
 		this.preparationTime = preparationTime;
 	}
 
-	public Time getCookingTime() {
+	public LocalTime getCookingTime() {
 		return cookingTime;
 	}
 
-	public void setCookingTime(Time cookingTime) {
+	public void setCookingTime(LocalTime cookingTime) {
 		this.cookingTime = cookingTime;
 	}
 

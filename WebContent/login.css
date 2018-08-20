@@ -1,0 +1,19 @@
+.title{
+	text-align: center;
+	color: green;
+},
+.container {
+	border-style: solid;
+	border-width: 2px; 
+	display: inline-block;
+}
+.form-control {
+	display: inline-block; 
+}, 
+
+.pseudo {
+	
+}, 
+.input{
+	
+}
