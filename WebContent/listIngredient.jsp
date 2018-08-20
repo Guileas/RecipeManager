@@ -35,33 +35,36 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr>
-		<%List<Ingredient> currentIngredient = null; %>
 			<c:forEach items="${ingredients}" var="i">
+			<tr>
 				<th><c:out value="${i.getId()}"></c:out></th>
 				<th><c:out value="${i.getName()}"></c:out></th>
 				<th><c:out value="${i.getPrice()}"></c:out></th>
-					<th>
-						<form method="get" action="deleteRecipe" >
-								<input type="hidden" name="id" value="${r.getId()}">
-								<button type="submit" value="Delete" class="btn btn-danger">DELETTE</button>
-						</form>
-					</th>
-					<th><input name="checkbox" type="checkbox" value="${i.getId()}"/></th>
+				<th>
+					<form method="get" action="deleteRecipe" >
+							<input type="hidden" name="id" value="${i.getId()}">
+							<button type="submit" value="Delete" class="btn btn-danger">DELETTE</button>
+					</form>
+				</th>
+				<th>
+					<input name="checkbox" type="checkbox" value="${i.getId()}"/>
+
+				</th>
+			</tr>
 			</c:forEach>
-		</tr>
-		<tr></tr>
-		<tr>
+		
+		<tr></tr>	
 			<c:forEach items="${ingredients}" var="i">
-				<c:if test="${(checkbox.checked == 'checked')}">
-					<c:set var="currentIngredient" value="currentIngredient.add(i)"></c:set>
-				</c:if>
+			<tr>
+				<th>
+					<form method="post" action="addRecipe">
+						<input type=hidden value="${currentIngredient}">
+						<button type="submit" onclick="addRecipe">Add a recipe</button>
+					</form>
+				</th>			
+			</tr>
 			</c:forEach>
-			<th><form method="get" action="addRecipe">
-				<input type=hidden value="${currentIngredient}">
-				<button type="submit">Add a recipe</button>
-			</form></th>			
-		</tr>
+
 		</tbody>
 	</table>
 </div>
