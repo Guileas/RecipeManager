@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib	prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<nav class="nav">
+
+<nav class="navbar navbar-dark bg-dark">
   	<c:if test="${empty sessionScope.pseudo}">
 		<a class="nav-link active" href="/RecipeManager/login">login</a>
 		<a class="nav-link active" href="/RecipeManager/signIn">sign In</a>

@@ -6,28 +6,19 @@
 
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="recipe.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add a new Recipe</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 <div>
-	<h1>Add a new Recipe</h1>
+<br>
+	<h1 class="title">Add a new Recipe</h1>
+<br>
 </div>
 	<table class="table">
-			
-		<thead class="thead-dark">
-			<tr>
-				<th>#</th>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Price</th>
-				<c:if test="${!(empty sessionScope.username)}">
-				<th></th>
-				</c:if>
-			</tr>
-		</thead>
 				
 		<tbody>
 		<form action="/RecipeManager/addRecipe" method="post" class="form-group">
